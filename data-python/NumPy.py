@@ -39,6 +39,10 @@ print('Random integer 0-100: {}\n'.format(arr10))
 arr = np.random.randint(-50,50,25)
 print('Original:\n {}\nReshape:\n {}\n'.format(arr,arr.reshape(5,5)))
 
+# copy array
+arr_copy = arr.copy()
+# print(arr_copy)
+
 # max and min
 print('Array: {}\n'.format(arr))
 print('Minimum value: {}'.format(arr.min()))
@@ -46,7 +50,31 @@ print('Minimum index: {}\n'.format(arr.argmin()))
 print('Maximum value: {}'.format(arr.max()))
 print('Maximum index: {}\n'.format(arr.argmax()))
 
+# array selection/indexing
+arr = np.arange(0,16,1)
+print('Array:\n {}\n'.format(arr))
+print('{}\n'.format(arr[2:6]))
+print('{}\n'.format(arr[13:]))
 
+arr = arr.reshape(4,4)
+print('{}\n'.format(arr))
+print('{}\n'.format(arr[1:,:3]))
+
+# conditional selection
+arr = np.arange(1,11)
+print('Array: {}\n'.format(arr))
+bool_arr = arr > 3
+print('Bool_arr: {}\n'.format(bool_arr))
+print('Values > 3: {}\n'.format(arr[arr > 3]))
+
+# Math operations
+arr1 = np.arange(0,12)
+arr2 = np.random.randint(1,50,12)
+print('Array 1: {}'.format(arr1))
+print('Array 2: {}\n'.format(arr2))
+# Math operations between 2 arrays must be same size
+print('Addition: {}\n'.format(arr1 + arr2))
+print('Multiplication: {}\n'.format(arr1 * arr2))
 
 
 
