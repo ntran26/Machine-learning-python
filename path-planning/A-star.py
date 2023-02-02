@@ -7,6 +7,8 @@ WIN = pygame.display.set_mode((WIDTH, WIDTH))
 pygame.display.set_caption("A* Path Planning")
 
 GREY = (128,128,128)
+GREY_LIGHT = (211,211,211)
+GREY_DARK = (169,169,169)
 BLUE = (0,0,255)
 GREEN = (0,255,0)
 RED = (255,0,0)
@@ -32,40 +34,40 @@ class Spot:
         return self.row, self.col
     
     def is_closed(self):
-        return self.color == RED
+        return self.color == GREY_LIGHT
     
     def is_open(self):
-        return self.color == GREEN
+        return self.color == GREY_DARK
 
     def is_barrier(self):
         return self.color == BLACK
 
     def is_start(self):
-        return self.color == ORANGE
+        return self.color == BLUE
 
     def is_end(self):
-        return self.color == PURPLE
+        return self.color == RED
 
     def reset(self):
         self.color = WHITE
     
     def make_start(self):
-        self.color = ORANGE
+        self.color = BLUE
     
     def make_closed(self):
-        self.color = RED
+        self.color = GREY_LIGHT
     
     def make_open(self):
-        self.color = GREEN
+        self.color = GREY_DARK
     
     def make_barrier(self):
         self.color = BLACK
 
     def make_end(self):
-        self.color = TURQUOISE
+        self.color = RED
 
     def make_path(self):
-        self.color = PURPLE
+        self.color = TURQUOISE
 
     def draw(self, win):
         pygame.draw.rect(win, self.color, (self.x, self.y, self.width, self.width))
@@ -219,10 +221,10 @@ def main(win, width):
                             spot.update_neighbors(grid)
                     algorithm(lambda: draw(win, grid, ROWS, width), grid, start, end)
 
-            if event.key == pygame.K_c:
-                start = None
-                end = None
-                grid = make_grid(ROWS, width)
+                if event.key == pygame.K_r:
+                    start = None
+                    end = None
+                    grid = make_grid(ROWS, width)
 
     pygame.quit()
 
